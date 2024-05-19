@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { Provider } from 'react-redux';
+import store from './Redux/store';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './Components/Home';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+       <div className="font-mono bg-[url('./Images/Greenwallpaper.jpg')] bg-center bg-cover bg-fixed opacity-80 absolute left-0 right-0 top-0 bottom-0 m-auto overflow-auto">
+        <BrowserRouter>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+        </Routes>
+        </BrowserRouter>
+      
+      </div>
+    </Provider>
+   
   );
 }
 
