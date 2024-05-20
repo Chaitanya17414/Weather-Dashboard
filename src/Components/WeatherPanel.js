@@ -28,7 +28,7 @@ function WeatherPanel() {
             });
 
             setCurrentForecast(currentForecastData);
-       
+            
             const next5DaysForecast = [];
             const processedDays = new Set(); 
     
@@ -78,7 +78,8 @@ function WeatherPanel() {
         setCurrentForecast(forecast)
         
     }
-
+    console.log(currentForecast)
+    console.log(error)
     return (
         <>
             <div>
@@ -109,7 +110,7 @@ function WeatherPanel() {
                         <div className="text-left text-[20px] font-bold text-black">
                             <span>{toDateFunction(currentForecast.dt)}</span>
                         </div>
-                       {  currentForecast && currentForecast.weather &&  currentForecast.weather[0] &&  currentForecast.weather[0].icon && (
+                       { currentForecast?.weather[0].icon && (
                            <div>
                                <img
                                className="weatherIcon" alt="myit"
@@ -145,8 +146,8 @@ function WeatherPanel() {
                     ) : <p className="text-md p-4 text-center text-red-600 font-medium">Please Select location to view the Results</p>}
                 </div>
             </div>
-            <UserPanel user={user} weatherDescription={currentForecast?.weather[0]?.description}/>
-           {extendedForecast.length >0 && (
+           {!error &&<UserPanel user={user} weatherDescription={currentForecast?.weather[0]?.description} />}
+           {extendedForecast.length >0 && !error && (
            <div className="bg-gradient-to-tl from-[#ce7771] to-[#9edef3] rounded-xl p-4 mx-auto my-5 w-[40%]">
                 <p className="text-left text-gray-700 text-lg font-medium">Extended Forecast</p>
                 <div>

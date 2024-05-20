@@ -15,10 +15,12 @@ const fetchWeatherByCity = createSlice ({
       builder
         .addCase(fetchCityWeather.pending, (state) => {
           state.status = 'loading';
+          state.error ="";
         })
         .addCase(fetchCityWeather.fulfilled, (state, action) => {
           state.status = 'succeeded';
           state.weatherData = action.payload;
+          state.error = "";
         })
         .addCase(fetchCityWeather.rejected, (state, action) => {
           state.status = 'failed';

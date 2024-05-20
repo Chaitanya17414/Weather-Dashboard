@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import EventSunny from "../Images/EventPlanner.jpg"
 import EventRain from "../Images/CancelledEvent.jpg"
+import EventCloud from "../Images/EventCloud.jpg"
 import EventSnow from "../Images/EventRain.jpg"
 import FarmerSunny from "../Images/Harvest.jpg"
+import FarmerCloud from "../Images/FarmerCloud.jpg"
 import FarmerRain from "../Images/HeavyRain.jpg"
 import FarmerSnow from "../Images/FarmerSnow.jpg"
 import TravelerSunny from "../Images/Travellermsg.jpg"
+import TravelerCloud from "../Images/TravelerCloud.jpg"
 import TravelerRain from "../Images/TourCancelled.jpg"
 import TravelerSnow from "../Images/TravellerSnow.jpg"
 
@@ -26,6 +29,9 @@ function UserPanel({ user, weatherDescription }) {
             setFarmerAction(weatherDescription);
         } else if (user === "traveler") {
             setTravelerAction(weatherDescription);
+        } else {
+            setMessage("");
+            setImageUrl("")
         }
     };
 
@@ -36,7 +42,10 @@ function UserPanel({ user, weatherDescription }) {
         } else if (weatherDescription.includes("snow")) {
             setMessage("Plan for the cold and snow! 🥶 Check transportation routes and ensure venues are accessible. Consider additional heating and cozy setups for outdoor events.")
             setImageUrl(EventSnow);
-        } else {
+        } else if (weatherDescription.includes("cloud")) {
+            setMessage("Cloudy Weather Alert,Pack some extra layers and plan for indoor activities, just in case!")
+            setImageUrl(EventCloud);
+        }else {
             setMessage("Perfect weather for your event! 😊 Enjoy smooth operations and happy attendees.")
             setImageUrl(EventSunny)
         }
@@ -50,7 +59,10 @@ function UserPanel({ user, weatherDescription }) {
         } else if (weatherDescription.includes("snow")) {
             setMessage("Prepare for the cold! 🥶 Ensure livestock are sheltered and feed is stocked up. Take precautions when working in icy conditions.")
             setImageUrl(FarmerSnow);
-        } else {
+        } else if (weatherDescription.includes("cloud")) {
+            setMessage("Looks like it might be cloudy. Consider checking your crops for any signs of excess moisture or fungal growth.")
+            setImageUrl(FarmerCloud);
+        }else {
             setMessage("Great weather for farming! 😊 Keep up the good work and make the most of the day.")
             setImageUrl(FarmerSunny);
         }
@@ -64,6 +76,9 @@ function UserPanel({ user, weatherDescription }) {
         } else if (weatherDescription.includes("snow")) {
             setMessage("Bundle up for the cold! 🥶 Check road conditions and travel routes before setting out. Consider visiting winter wonderlands or enjoying hot drinks in charming cafes.")
             setImageUrl(TravelerSnow);
+        } else if (weatherDescription.includes("cloud")) { 
+            setMessage("Looks like it might be cloudy. If you're traveling, enjoy the scenic views of the clouds!")
+           setImageUrl(TravelerCloud);
         } else {
             setMessage("Perfect weather for sightseeing! 😊 Enjoy your journey and make the most of the beautiful day.")
             setImageUrl(TravelerSunny);

@@ -8,7 +8,6 @@ export const fetchCityWeather = createAsyncThunk(
     async (city,{rejectWithValue}) => {
         try {
           const response = await axios.get(`${rootUrl}/forecast?q=${city}&appid=${ApiKey}`);
-          console.log(response.data)
           return response.data;
          
         }  catch (err) {
